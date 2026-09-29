@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nour Tracking System - إدارة شحنات وزبائن الوساطة</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Supabase JS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
@@ -90,56 +87,54 @@
         </div>
 
         <!-- لوحة المؤشرات السريعة (Dashboard) -->
-        <div class="grid grid-cols-2 lg:grid-cols-5 gap-3.5">
-            <div class="bg-white p-4 sm:p-5 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden hover-scale">
+        <div class="grid grid-cols-2 lg:grid-cols-6 gap-3.5">
+            <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden hover-scale">
                 <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-emerald-500"></div>
                 <div>
-                    <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider">إجمالي المبيعات</p>
-                    <h3 id="dash-revenue" class="text-base sm:text-xl font-black text-slate-800 mt-1">₪0.00</h3>
+                    <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider">المبيعات المحصلة</p>
+                    <h3 id="dash-revenue" class="text-base sm:text-lg font-black text-slate-800 mt-1">₪0.00</h3>
                 </div>
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-base sm:text-lg shrink-0">
-                    <i class="fa-solid fa-shekel-sign"></i>
-                </div>
+                <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-base shrink-0"><i class="fa-solid fa-shekel-sign"></i></div>
             </div>
-            <div class="bg-white p-4 sm:p-5 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden hover-scale">
+            <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden hover-scale">
                 <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-teal-500"></div>
                 <div>
-                    <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider">صافي الأرباح</p>
-                    <h3 id="dash-profit" class="text-base sm:text-xl font-black text-emerald-600 mt-1">₪0.00</h3>
+                    <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider">صافي الأرباح (المقبوضة)</p>
+                    <h3 id="dash-profit" class="text-base sm:text-lg font-black text-emerald-600 mt-1">₪0.00</h3>
                 </div>
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center text-base sm:text-lg shrink-0">
-                    <i class="fa-solid fa-piggy-bank"></i>
-                </div>
+                <div class="w-10 h-10 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center text-base shrink-0"><i class="fa-solid fa-piggy-bank"></i></div>
             </div>
-            <div class="bg-white p-4 sm:p-5 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden hover-scale">
+            <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden hover-scale">
+                <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-amber-500"></div>
+                <div>
+                    <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider">إجمالي الشحنات المدفوعة</p>
+                    <h3 id="dash-shipment-costs" class="text-base sm:text-lg font-black text-amber-600 mt-1">₪0.00</h3>
+                </div>
+                <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-base shrink-0"><i class="fa-solid fa-truck-fast"></i></div>
+            </div>
+            <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden hover-scale">
                 <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-rose-500"></div>
                 <div>
-                    <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider">المصاريف</p>
-                    <h3 id="dash-expenses" class="text-base sm:text-xl font-black text-rose-600 mt-1">₪0.00</h3>
+                    <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider">المصاريف الأخرى</p>
+                    <h3 id="dash-expenses" class="text-base sm:text-lg font-black text-rose-600 mt-1">₪0.00</h3>
                 </div>
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-base sm:text-lg shrink-0">
-                    <i class="fa-solid fa-receipt"></i>
-                </div>
+                <div class="w-10 h-10 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-base shrink-0"><i class="fa-solid fa-receipt"></i></div>
             </div>
-            <div class="bg-white p-4 sm:p-5 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden hover-scale">
+            <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden hover-scale">
                 <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-blue-500"></div>
                 <div>
                     <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider">شحنات وصلت</p>
-                    <h3 id="dash-received" class="text-base sm:text-xl font-black text-blue-600 mt-1">0</h3>
+                    <h3 id="dash-received" class="text-base sm:text-lg font-black text-blue-600 mt-1">0</h3>
                 </div>
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-base sm:text-lg shrink-0">
-                    <i class="fa-solid fa-box-archive"></i>
-                </div>
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-base shrink-0"><i class="fa-solid fa-box-archive"></i></div>
             </div>
-            <div class="bg-white p-4 sm:p-5 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden col-span-2 lg:col-span-1 hover-scale">
+            <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden col-span-2 lg:col-span-1 hover-scale">
                 <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-indigo-500"></div>
                 <div>
                     <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider">إجمالي الزبائن</p>
-                    <h3 id="dash-clients" class="text-base sm:text-xl font-black text-indigo-600 mt-1">0</h3>
+                    <h3 id="dash-clients" class="text-base sm:text-lg font-black text-indigo-600 mt-1">0</h3>
                 </div>
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-base sm:text-lg shrink-0">
-                    <i class="fa-solid fa-users"></i>
-                </div>
+                <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-base shrink-0"><i class="fa-solid fa-users"></i></div>
             </div>
         </div>
 
@@ -166,18 +161,23 @@
         <div id="section-shipments" class="space-y-4">
             <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
                 <div class="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-3">
-                    <h2 class="font-bold text-base sm:text-lg text-slate-800 flex items-center gap-2"><i class="fa-solid fa-box text-emerald-600"></i> الشحنات الرئيسية (تتبع البارسل)</h2>
-                    <button onclick="openShipmentModal()" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20 cursor-pointer hover-scale">
-                        <i class="fa-solid fa-plus"></i> إضافة شحنة رئيسية
-                    </button>
+                    <h2 class="font-bold text-base sm:text-lg text-slate-800 flex items-center gap-2"><i class="fa-solid fa-box text-emerald-600"></i> الشحنات الرئيسية (تتبع البارسل والتكاليف)</h2>
+                    <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                        <button onclick="exportTableToExcel('shipments-table-body', 'Shipments_Report.csv')" class="bg-blue-600 hover:bg-blue-700 text-white px-3.5 py-2.5 rounded-2xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer hover-scale">
+                            <i class="fa-solid fa-file-excel"></i> سحب Excel
+                        </button>
+                        <button onclick="openShipmentModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-2xl text-xs font-bold transition flex items-center gap-2 shadow-md shadow-emerald-600/20 cursor-pointer hover-scale">
+                            <i class="fa-solid fa-plus"></i> إضافة شحنة رئيسية
+                        </button>
+                    </div>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-right text-xs sm:text-sm min-w-[650px]">
+                    <table class="w-full text-right text-xs sm:text-sm min-w-[750px]">
                         <thead class="bg-slate-50 text-slate-500 uppercase tracking-wider border-b border-slate-100 text-[11px]">
                             <tr>
-                                <th class="p-4">كود الشحنة (البارسل)</th>
-                                <th class="p-4">الموقع</th>
-                                <th class="p-4">التاريخ</th>
+                                <th class="p-4">كود الشحنة</th>
+                                <th class="p-4">الموقع والتاريخ</th>
+                                <th class="p-4">التكلفة والعمولة</th>
                                 <th class="p-4">الزبائن المشاركون</th>
                                 <th class="p-4 text-center">حالة البريد وإشعار الواتساب</th>
                                 <th class="p-4 text-center">الإجراءات</th>
@@ -195,21 +195,24 @@
         <div id="section-orders" class="space-y-4 hidden">
             <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
                 <div class="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-3">
-                    <h2 class="font-bold text-base sm:text-lg text-slate-800 flex items-center gap-2"><i class="fa-solid fa-cart-shopping text-emerald-600"></i> طلبيات الزبائن وتوزيعها</h2>
-                    <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-                        <input type="text" id="search-orders" oninput="filterOrdersList()" placeholder="بحث برقم الشحنة أو الزبون..." class="px-4 py-2 border border-slate-200 rounded-2xl text-xs sm:text-sm w-full sm:w-64 focus:ring-2 focus:ring-emerald-500 bg-slate-50 focus:outline-none">
-                        <button onclick="openOrderModal()" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2 whitespace-nowrap shadow-md shadow-emerald-600/20 cursor-pointer hover-scale">
+                    <h2 class="font-bold text-base sm:text-lg text-slate-800 flex items-center gap-2"><i class="fa-solid fa-cart-shopping text-emerald-600"></i> طلبيات الزبائن وحالة الدفع</h2>
+                    <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto justify-end">
+                        <input type="text" id="search-orders" oninput="filterOrdersList()" placeholder="بحث برقم الشحنة أو الزبون..." class="px-4 py-2 border border-slate-200 rounded-2xl text-xs sm:text-sm w-full sm:w-56 focus:ring-2 focus:ring-emerald-500 bg-slate-50 focus:outline-none">
+                        <button onclick="exportTableToExcel('orders-table-body', 'Orders_Report.csv')" class="bg-blue-600 hover:bg-blue-700 text-white px-3.5 py-2.5 rounded-2xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer hover-scale">
+                            <i class="fa-solid fa-file-excel"></i> سحب Excel
+                        </button>
+                        <button onclick="openOrderModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-2xl text-xs font-bold transition flex items-center gap-2 whitespace-nowrap shadow-md shadow-emerald-600/20 cursor-pointer hover-scale">
                             <i class="fa-solid fa-plus"></i> طلبية زبون
                         </button>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-right text-xs sm:text-sm min-w-[700px]">
+                    <table class="w-full text-right text-xs sm:text-sm min-w-[750px]">
                         <thead class="bg-slate-50 text-slate-500 uppercase tracking-wider border-b border-slate-100 text-[11px]">
                             <tr>
-                                <th class="p-4">كود الشحنة الرئيسية</th>
+                                <th class="p-4">كود الشحنة</th>
                                 <th class="p-4">اسم الزبون</th>
-                                <th class="p-4">ما دفع (₪)</th>
+                                <th class="p-4">ما دفع (₪) وحالة الدفع</th>
                                 <th class="p-4">الربح الصافي (₪)</th>
                                 <th class="p-4">تفاصيل القطع</th>
                                 <th class="p-4 text-center">الإجراءات</th>
@@ -223,14 +226,19 @@
             </div>
         </div>
 
-        <!-- 3. قسم الزبائن وتفاصيلهم -->
+        <!-- 3. قسم الزبائن -->
         <div id="section-clients" class="space-y-4 hidden">
             <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
                 <div class="p-4 sm:p-5 border-b border-slate-100 flex justify-between items-center">
                     <h2 class="font-bold text-base sm:text-lg text-slate-800 flex items-center gap-2"><i class="fa-solid fa-users text-indigo-600"></i> قائمة الزبائن وحساباتهم</h2>
-                    <button onclick="openClientModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-2xl text-xs font-bold transition shadow-md shadow-emerald-600/20 cursor-pointer flex items-center gap-2 hover-scale">
-                        <i class="fa-solid fa-user-plus"></i> زبون جديد
-                    </button>
+                    <div class="flex items-center gap-2">
+                        <button onclick="exportTableToExcel('clients-table-body', 'Clients_Report.csv')" class="bg-blue-600 hover:bg-blue-700 text-white px-3.5 py-2.5 rounded-2xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer hover-scale">
+                            <i class="fa-solid fa-file-excel"></i> سحب Excel
+                        </button>
+                        <button onclick="openClientModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-2xl text-xs font-bold transition shadow-md shadow-emerald-600/20 cursor-pointer flex items-center gap-2 hover-scale">
+                            <i class="fa-solid fa-user-plus"></i> زبون جديد
+                        </button>
+                    </div>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-right text-xs sm:text-sm min-w-[650px]">
@@ -239,8 +247,8 @@
                                 <th class="p-4">اسم الزبون</th>
                                 <th class="p-4">رقم الهاتف</th>
                                 <th class="p-4">العنوان</th>
-                                <th class="p-4">إجمالي ما دفع (₪)</th>
-                                <th class="p-4">إجمالي ربحك (₪)</th>
+                                <th class="p-4">إجمالي المدفوعات (₪)</th>
+                                <th class="p-4">الأرباح المقبوضة (₪)</th>
                                 <th class="p-4 text-center">التفاصيل</th>
                                 <th class="p-4 text-center">الإجراءات</th>
                             </tr>
@@ -285,9 +293,14 @@
             <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
                 <div class="p-4 sm:p-5 border-b border-slate-100 flex justify-between items-center">
                     <h2 class="font-bold text-base sm:text-lg text-slate-800 flex items-center gap-2"><i class="fa-solid fa-receipt text-rose-600"></i> المصاريف والمدفوعات الأخرى</h2>
-                    <button onclick="openExpenseModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-2xl text-xs font-bold transition shadow-md shadow-emerald-600/20 cursor-pointer flex items-center gap-2 hover-scale">
-                        <i class="fa-solid fa-plus"></i> مصروف جديد
-                    </button>
+                    <div class="flex items-center gap-2">
+                        <button onclick="exportTableToExcel('expenses-table-body', 'Expenses_Report.csv')" class="bg-blue-600 hover:bg-blue-700 text-white px-3.5 py-2.5 rounded-2xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer hover-scale">
+                            <i class="fa-solid fa-file-excel"></i> سحب Excel
+                        </button>
+                        <button onclick="openExpenseModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-2xl text-xs font-bold transition shadow-md shadow-emerald-600/20 cursor-pointer flex items-center gap-2 hover-scale">
+                            <i class="fa-solid fa-plus"></i> مصروف جديد
+                        </button>
+                    </div>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-right text-xs sm:text-sm min-w-[550px]">
@@ -333,6 +346,16 @@
                         <input type="date" id="form-shipment-date" required class="w-full border border-slate-200 rounded-2xl px-3.5 py-2.5 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     </div>
                 </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">تكلفة الشحنة الأساسية (₪)</label>
+                        <input type="number" step="0.01" id="form-shipping-cost" required placeholder="0.00" class="w-full border border-slate-200 rounded-2xl px-3.5 py-2.5 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">نسبة العمولة (%) إن وجدت</label>
+                        <input type="number" step="0.01" id="form-commission-rate" placeholder="مثال: 5" class="w-full border border-slate-200 rounded-2xl px-3.5 py-2.5 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                </div>
                 <div class="flex items-center gap-2.5 bg-emerald-50/50 p-3 rounded-2xl border border-emerald-100">
                     <input type="checkbox" id="form-shipment-received" class="w-4 h-4 text-emerald-600 rounded border-slate-300 cursor-pointer">
                     <label for="form-shipment-received" class="text-xs sm:text-sm font-bold text-emerald-900 cursor-pointer">تم استلام الشحنة الكبيرة من البريد</label>
@@ -349,7 +372,7 @@
         </div>
     </div>
 
-    <!-- مودال إضافة/تعديل طلبية -->
+    <!-- مودال إضافة طلبية -->
     <div id="order-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-6 space-y-4 border border-slate-100">
             <div class="flex justify-between items-center border-b border-slate-100 pb-3">
@@ -376,6 +399,10 @@
                         <input type="number" step="0.01" id="form-profit" required class="w-full border border-slate-200 rounded-2xl px-3.5 py-2.5 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     </div>
                 </div>
+                <div class="flex items-center gap-2.5 bg-indigo-50/50 p-3 rounded-2xl border border-indigo-100">
+                    <input type="checkbox" id="form-is-paid" class="w-4 h-4 text-indigo-600 rounded border-slate-300 cursor-pointer">
+                    <label for="form-is-paid" class="text-xs sm:text-sm font-bold text-indigo-950 cursor-pointer">هل قام الزبون بدفع المبلغ؟ (ليتم احتساب الربح)</label>
+                </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-600 mb-1">تفاصيل القطع الخاصة بهذا الزبون</label>
                     <textarea id="form-notes" rows="2" placeholder="مثال: فستان أحمر قياس L..." class="w-full border border-slate-200 rounded-2xl px-3.5 py-2.5 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
@@ -388,7 +415,7 @@
         </div>
     </div>
 
-    <!-- مودال إضافة/تعديل زبون -->
+    <!-- مودال زبون -->
     <div id="client-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 space-y-4 border border-slate-100">
             <div class="flex justify-between items-center border-b border-slate-100 pb-3">
@@ -402,7 +429,7 @@
                     <input type="text" id="client-form-name" required class="w-full border border-slate-200 rounded-2xl px-3.5 py-2.5 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 mb-1">رقم الهاتف (مع الرمز الدولي مثلاً 972...)</label>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">رقم الهاتف (مثلاً 972...)</label>
                     <input type="text" id="client-form-phone" placeholder="052..." class="w-full border border-slate-200 rounded-2xl px-3.5 py-2.5 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 </div>
                 <div>
@@ -428,7 +455,7 @@
         </div>
     </div>
 
-    <!-- مودال إضافة/تعديل موقع -->
+    <!-- مودال موقع -->
     <div id="website-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 space-y-4 border border-slate-100">
             <div class="flex justify-between items-center border-b border-slate-100 pb-3">
@@ -457,11 +484,11 @@
         </div>
     </div>
 
-    <!-- مودال إضافة/تعديل مصروف -->
+    <!-- مودال مصروف -->
     <div id="expense-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 space-y-4 border border-slate-100">
             <div class="flex justify-between items-center border-b border-slate-100 pb-3">
-                <h3 id="expense-modal-title" class="text-base sm:text-lg font-bold text-slate-900">إضافة مصروف / مدفوعات أخرى</h3>
+                <h3 id="expense-modal-title" class="text-base sm:text-lg font-bold text-slate-900">إضافة مصروف جديد</h3>
                 <button onclick="closeExpenseModal()" class="text-slate-400 hover:text-slate-700 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <form id="expense-form" onsubmit="saveExpense(event)" class="space-y-3.5">
@@ -490,7 +517,7 @@
         </div>
     </div>
 
-    <!-- الجافاسكريبت والنظام البرمجي -->
+    <!-- كود الجافاسكريبت والمنطق -->
     <script>
         const SUPABASE_URL = "https://xjgxuwphpyzeqeacyshp.supabase.co";
         const SUPABASE_ANON_KEY = "sb_publishable_wb8bUw9HTSQteDeaxMwF1g_qisXRsgA";
@@ -613,15 +640,30 @@
             renderExpenses(filteredExpenses);
         }
 
+        // --- حساب الإجماليات والمؤشرات ---
         function renderDashboard(fOrders, fShipments, fExpenses) {
-            const totalRevenue = fOrders.reduce((sum, o) => sum + Number(o.total_price || 0), 0);
-            const totalProfit = fOrders.reduce((sum, o) => sum + Number(o.profit || 0), 0);
+            // المبيعات المحصلة فقط من الزبائن الذين دفعوا
+            const paidOrders = fOrders.filter(o => o.is_paid);
+            const totalRevenue = paidOrders.reduce((sum, o) => sum + Number(o.total_price || 0), 0);
+            
+            // الأرباح الصافية المحصلة (من الزبائن الذين دفعوا فقط) ناقص المصاريف الأخرى
+            const totalProfitFromPaidOrders = paidOrders.reduce((sum, o) => sum + Number(o.profit || 0), 0);
             const totalExpenses = fExpenses.reduce((sum, e) => sum + Number(e.amount || 0), 0);
-            const netProfitToday = totalProfit - totalExpenses;
+            const netProfit = totalProfitFromPaidOrders - totalExpenses;
+
+            // إجمالي المبالغ المدفوعة بالشحنات الرئيسية
+            const totalShipmentCosts = fShipments.reduce((sum, s) => {
+                const base = Number(s.shipping_cost || 0);
+                const comm = Number(s.commission_rate || 0);
+                const totalWithComm = base + (base * (comm / 100));
+                return sum + totalWithComm;
+            }, 0);
+
             const receivedShipmentsCount = fShipments.filter(s => s.is_received).length;
 
             document.getElementById('dash-revenue').textContent = `₪${totalRevenue.toFixed(2)}`;
-            document.getElementById('dash-profit').textContent = `₪${netProfitToday.toFixed(2)}`;
+            document.getElementById('dash-profit').textContent = `₪${netProfit.toFixed(2)}`;
+            document.getElementById('dash-shipment-costs').textContent = `₪${totalShipmentCosts.toFixed(2)}`;
             document.getElementById('dash-expenses').textContent = `₪${totalExpenses.toFixed(2)}`;
             document.getElementById('dash-received').textContent = receivedShipmentsCount;
             document.getElementById('dash-clients').textContent = clientsData.length;
@@ -635,11 +677,18 @@
             }
             tbody.innerHTML = data.map(s => {
                 const relatedOrders = ordersData.filter(o => o.shipment_code === s.shipment_code);
+                const base = Number(s.shipping_cost || 0);
+                const comm = Number(s.commission_rate || 0);
+                const totalWithComm = base + (base * (comm / 100));
+                
                 return `
                     <tr class="hover:bg-slate-50/80 transition">
                         <td class="p-4 font-bold text-emerald-700">${s.shipment_code}</td>
-                        <td class="p-4"><span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-xl text-xs font-bold">${s.website}</span></td>
-                        <td class="p-4 text-xs text-slate-500">${s.date}</td>
+                        <td class="p-4"><span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-xl text-xs font-bold">${s.website}</span><br><span class="text-[11px] text-slate-400">${s.date}</span></td>
+                        <td class="p-4">
+                            <span class="font-bold text-slate-800">₪${totalWithComm.toFixed(2)}</span>
+                            ${comm > 0 ? `<br><span class="text-[10px] text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded font-medium">شامل عمولة ${comm}\% (الأساس: ₪${base})</span>` : ''}
+                        </td>
                         <td class="p-4 font-semibold text-slate-700">${relatedOrders.length} زبائن</td>
                         <td class="p-4 text-center">
                             <div class="flex flex-col sm:flex-row items-center justify-center gap-2">
@@ -659,11 +708,11 @@
             }).join('');
         }
 
-        // عند تغيير حالة الشحنة الرئيسية، يتم تحديث حالتها مباشرة
+        // عند تغيير حالة الشحنة الرئيسية، يتم تحديث الشحنة والطلبيات المرتبطة بها دفعة واحدة تلقائياً
         async function toggleShipmentReceived(id, shipmentCode, isReceived) {
             const { error } = await supabaseClient.from('shipments').update({ is_received: isReceived }).eq('id', id);
             if (error) {
-                alert('خطأ في تحديث الشحنة: ' + error.message);
+                alert('خطأ في التحديث: ' + error.message);
             } else {
                 fetchAllData();
             }
@@ -693,13 +742,16 @@
             }
             tbody.innerHTML = data.map(o => {
                 const parentShipment = shipmentsData.find(s => s.shipment_code === o.shipment_code);
-                const isReceived = parentShipment ? parentShipment.is_received : false;
+                const isRec = parentShipment ? parentShipment.is_received : false;
                 return `
                     <tr class="hover:bg-slate-50/80 transition">
-                        <td class="p-4 font-bold text-emerald-700">${o.shipment_code} <span class="text-[10px] px-2 py-0.5 rounded ${isReceived ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${isReceived ? 'وصلت' : 'بالطريق'}</span></td>
+                        <td class="p-4 font-bold text-emerald-700">${o.shipment_code} <br><span class="text-[10px] px-2 py-0.5 rounded ${isRec ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${isRec ? 'وصلت' : 'بالطريق'}</span></td>
                         <td class="p-4 font-semibold text-slate-800">${o.client_name}</td>
-                        <td class="p-4 font-bold text-slate-800">₪${Number(o.total_price).toFixed(2)}</td>
-                        <td class="p-4 font-bold text-emerald-600">+₪${Number(o.profit).toFixed(2)}</td>
+                        <td class="p-4">
+                            <span class="font-bold text-slate-800">₪${Number(o.total_price).toFixed(2)}</span><br>
+                            <span class="text-[11px] font-bold px-2 py-0.5 rounded-lg ${o.is_paid ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-600'}">${o.is_paid ? '✔ دفع للطلب' : '❌ لم يدفع بعد'}</span>
+                        </td>
+                        <td class="p-4 font-bold ${o.is_paid ? 'text-emerald-600' : 'text-slate-400'}">+₪${Number(o.profit).toFixed(2)} ${!o.is_paid ? '(معلق)' : ''}</td>
                         <td class="p-4 text-slate-600 text-xs">${o.notes || '-'}</td>
                         <td class="p-4 text-center space-x-1 space-x-reverse">
                             <button onclick="editOrder('${o.id}')" class="text-blue-600 hover:text-blue-800 p-1.5 hover:bg-blue-50 rounded-lg transition cursor-pointer"><i class="fa-solid fa-pen"></i></button>
@@ -723,8 +775,9 @@
             }
             tbody.innerHTML = clientsData.map(c => {
                 const clientOrders = ordersData.filter(o => o.client_name === c.name);
-                const totalSpent = clientOrders.reduce((sum, o) => sum + Number(o.total_price || 0), 0);
-                const totalProfit = clientOrders.reduce((sum, o) => sum + Number(o.profit || 0), 0);
+                const paidOrders = clientOrders.filter(o => o.is_paid);
+                const totalSpent = paidOrders.reduce((sum, o) => sum + Number(o.total_price || 0), 0);
+                const totalProfit = paidOrders.reduce((sum, o) => sum + Number(o.profit || 0), 0);
                 return `
                     <tr class="hover:bg-slate-50/80 transition">
                         <td class="p-4 font-bold text-slate-800">${c.name}</td>
@@ -759,11 +812,11 @@
             if (clientOrders.length === 0) {
                 html += `<p class="text-slate-400 text-xs py-4 text-center">لا توجد طلبيات مسجلة.</p>`;
             } else {
-                html += `<div class="overflow-x-auto border border-slate-100 rounded-2xl"><table class="w-full text-right text-xs"><thead class="bg-slate-50 text-slate-500"><tr><th class="p-3">الشحنة</th><th class="p-3">ما دفع</th><th class="p-3">الربح</th><th class="p-3">الحالة</th><th class="p-3">القطع</th></tr></thead><tbody class="divide-y divide-slate-100">`;
+                html += `<div class="overflow-x-auto border border-slate-100 rounded-2xl"><table class="w-full text-right text-xs"><thead class="bg-slate-50 text-slate-500"><tr><th class="p-3">الشحنة</th><th class="p-3">ما دفع</th><th class="p-3">حالة الدفع</th><th class="p-3">الربح</th><th class="p-3">حالة البريد</th><th class="p-3">القطع</th></tr></thead><tbody class="divide-y divide-slate-100">`;
                 html += clientOrders.map(o => {
                     const parentShipment = shipmentsData.find(s => s.shipment_code === o.shipment_code);
                     const isRec = parentShipment ? parentShipment.is_received : false;
-                    return `<tr><td class="p-3 font-bold text-emerald-700">${o.shipment_code}</td><td class="p-3 font-bold">₪${Number(o.total_price).toFixed(2)}</td><td class="p-3 font-bold text-emerald-600">+₪${Number(o.profit).toFixed(2)}</td><td class="p-3"><span class="px-2.5 py-1 rounded-lg text-[10px] font-bold ${isRec ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${isRec ? 'وصلت' : 'بالطريق'}</span></td><td class="p-3 text-slate-600">${o.notes || '-'}</td></tr>`;
+                    return `<tr><td class="p-3 font-bold text-emerald-700">${o.shipment_code}</td><td class="p-3 font-bold">₪${Number(o.total_price).toFixed(2)}</td><td class="p-3 font-bold ${o.is_paid ? 'text-emerald-600' : 'text-rose-500'}">${o.is_paid ? 'دفع' : 'لم يدفع'}</td><td class="p-3 font-bold text-emerald-600">+₪${Number(o.profit).toFixed(2)}</td><td class="p-3"><span class="px-2.5 py-1 rounded-lg text-[10px] font-bold ${isRec ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${isRec ? 'وصلت' : 'بالطريق'}</span></td><td class="p-3 text-slate-600">${o.notes || '-'}</td></tr>`;
                 }).join('');
                 html += `</tbody></table></div>`;
             }
@@ -812,6 +865,40 @@
             `).join('');
         }
 
+        // --- دالة تصدير الجداول إلى ملف Excel (CSV) ---
+        function exportTableToExcel(tableBodyId, filename) {
+            const tbody = document.getElementById(tableBodyId);
+            if (!tbody || tbody.rows.length === 0 || tbody.rows.cells?.length === 1) {
+                alert('لا توجد بيانات لتصديرها!');
+                return;
+            }
+            let csv = [];
+            // استخراج العناوين من الجدول الأب
+            const table = tbody.closest('table');
+            const headers = [];
+            table.querySelectorAll('thead th').forEach(th => headers.push('"' + th.innerText.replace(/[\n\r]+/g, ' ').trim() + '"'));
+            csv.push(headers.join(','));
+
+            // استخراج الصفوف
+            table.querySelectorAll('tbody tr').forEach(tr => {
+                const row = [];
+                tr.querySelectorAll('td').forEach((td, idx) => {
+                    // تخطي أعمدة الإجراءات الأخيرة
+                    if(idx === tr.querySelectorAll('td').length - 1 && tr.querySelectorAll('td').length > 4) return;
+                    row.push('"' + td.innerText.replace(/[\n\r]+/g, ' ').trim() + '"');
+                });
+                if(row.length > 0) csv.push(row.join(','));
+            });
+
+            const blob = new Blob(["\ufeff" + csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute("download", filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
         function switchTab(tab) {
             ['shipments', 'orders', 'clients', 'websites', 'expenses'].forEach(t => {
                 document.getElementById(`section-${t}`).classList.add('hidden');
@@ -838,6 +925,8 @@
                 shipment_code: document.getElementById('form-shipment-code').value,
                 website: document.getElementById('form-shipment-website').value,
                 date: document.getElementById('form-shipment-date').value,
+                shipping_cost: parseFloat(document.getElementById('form-shipping-cost').value || 0),
+                commission_rate: parseFloat(document.getElementById('form-commission-rate').value || 0),
                 is_received: document.getElementById('form-shipment-received').checked,
                 notes: document.getElementById('form-shipment-notes').value
             };
@@ -853,6 +942,8 @@
             document.getElementById('form-shipment-code').value = s.shipment_code;
             document.getElementById('form-shipment-website').value = s.website;
             document.getElementById('form-shipment-date').value = s.date;
+            document.getElementById('form-shipping-cost').value = s.shipping_cost;
+            document.getElementById('form-commission-rate').value = s.commission_rate || '';
             document.getElementById('form-shipment-received').checked = s.is_received;
             document.getElementById('form-shipment-notes').value = s.notes || '';
             document.getElementById('shipment-modal-title').textContent = 'تعديل الشحنة الرئيسية';
@@ -886,6 +977,7 @@
                 client_name: document.getElementById('form-client-name').value,
                 total_price: parseFloat(document.getElementById('form-total-price').value),
                 profit: parseFloat(document.getElementById('form-profit').value),
+                is_paid: document.getElementById('form-is-paid').checked,
                 notes: document.getElementById('form-notes').value
             };
             const res = id ? await supabaseClient.from('orders').update(data).eq('id', id) : await supabaseClient.from('orders').insert([data]);
@@ -901,6 +993,7 @@
             document.getElementById('form-client-name').value = o.client_name;
             document.getElementById('form-total-price').value = o.total_price;
             document.getElementById('form-profit').value = o.profit;
+            document.getElementById('form-is-paid').checked = o.is_paid;
             document.getElementById('form-notes').value = o.notes || '';
             document.getElementById('order-modal-title').textContent = 'تعديل طلبيات الزبون';
             document.getElementById('order-modal').classList.remove('hidden');
