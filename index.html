@@ -317,10 +317,11 @@
                     <div class="w-9 h-9 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-shekel-sign"></i></div>
                 </div>
 
+                <!-- زر الأرباح التفصيلي المفصل من الألف للياء -->
                 <div onclick="showDashboardDetails('profit')" class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200 flex items-center justify-between relative overflow-hidden hover-scale cursor-pointer group">
                     <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-teal-600 group-hover:bg-teal-700 transition"></div>
                     <div>
-                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">الأرباح</p>
+                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">الأرباح (اضغط للتفصيل)</p>
                         <h3 id="dash-profit" class="text-sm sm:text-base font-black text-emerald-700 mt-1">₪0.00</h3>
                     </div>
                     <div class="w-9 h-9 bg-teal-100 text-teal-800 rounded-2xl flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-piggy-bank"></i></div>
@@ -374,25 +375,25 @@
 
             <!-- أزرار التبديل بين الأقسام -->
             <div class="flex flex-row overflow-x-auto gap-2 bg-white p-2.5 rounded-3xl shadow-sm border border-slate-200 scrollbar-none">
-                <button onclick="switchTab('shipments')" id="btn-tab-shipments" class="px-4 py-2.5 rounded-2xl font-black text-xs sm:text-sm bg-emerald-700 text-white transition shadow-sm cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
+                <button onclick="switchTab('shipments')" id="btn-tab-shipments" class="px-4.5 py-2.5 rounded-2xl font-black text-xs sm:text-sm bg-emerald-700 text-white transition shadow-sm cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
                     <i class="fa-solid fa-boxes-packing"></i> الشحنات الرئيسية
                 </button>
-                <button onclick="switchTab('orders')" id="btn-tab-orders" class="px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
+                <button onclick="switchTab('orders')" id="btn-tab-orders" class="px-4.5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
                     <i class="fa-solid fa-cart-shopping"></i> طلبيات الزبائن
                 </button>
-                <button onclick="switchTab('clients')" id="btn-tab-clients" class="px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
+                <button onclick="switchTab('clients')" id="btn-tab-clients" class="px-4.5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
                     <i class="fa-solid fa-address-book"></i> الزبائن وملاحظاتهم
                 </button>
-                <button onclick="switchTab('announcements')" id="btn-tab-announcements" class="px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
+                <button onclick="switchTab('announcements')" id="btn-tab-announcements" class="px-4.5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
                     <i class="fa-solid fa-bullhorn"></i> إدارة الإعلانات
                 </button>
-                <button onclick="switchTab('websites')" id="btn-tab-websites" class="px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
+                <button onclick="switchTab('websites')" id="btn-tab-websites" class="px-4.5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
                     <i class="fa-solid fa-globe"></i> مواقع الشراء
                 </button>
-                <button onclick="switchTab('expenses')" id="btn-tab-expenses" class="px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
+                <button onclick="switchTab('expenses')" id="btn-tab-expenses" class="px-4.5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
                     <i class="fa-solid fa-file-invoice-dollar"></i> المصاريف
                 </button>
-                <button onclick="switchTab('logs')" id="btn-tab-logs" class="px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
+                <button onclick="switchTab('logs')" id="btn-tab-logs" class="px-4.5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
                     <i class="fa-solid fa-clock-rotate-left"></i> سجل الحركات
                 </button>
             </div>
@@ -599,12 +600,12 @@
 
     <!-- المودالات والنوافذ المنبثقة -->
     <div id="dash-details-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full p-6 sm:p-8 space-y-4 max-h-[85vh] overflow-y-auto border border-slate-200">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-5xl w-full p-6 sm:p-8 space-y-4 max-h-[85vh] overflow-y-auto border border-slate-200">
             <div class="flex justify-between items-center border-b border-slate-200 pb-3">
                 <h3 id="dash-details-title" class="text-base sm:text-lg font-black text-slate-900">تفاصيل المؤشر</h3>
                 <div class="flex items-center gap-2">
                     <button id="dash-details-excel-btn" onclick="" class="bg-blue-700 hover:bg-blue-800 text-white px-3.5 py-2 rounded-xl text-xs font-black transition hidden items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-file-excel"></i> تصدير Excel</button>
-                    <button id="dash-details-invoice-btn" onclick="" class="bg-emerald-700 hover:bg-emerald-800 text-white px-3.5 py-2 rounded-xl text-xs font-black transition hidden items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-file-invoice"></i> طباعة فاتورة أرباح</button>
+                    <button id="dash-details-invoice-btn" onclick="" class="bg-emerald-700 hover:bg-emerald-800 text-white px-3.5 py-2 rounded-xl text-xs font-black transition hidden items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-file-invoice"></i> طباعة كشف أرباح</button>
                     <button onclick="closeDashDetailsModal()" class="text-slate-500 hover:text-slate-900 cursor-pointer text-lg font-bold"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             </div>
@@ -1107,7 +1108,6 @@
             if(container) container.innerHTML = `<span class="animate-ticker">${tickerText} &nbsp;&nbsp;&nbsp;&nbsp; ${tickerText}</span>`;
         }
 
-        // مطابقة رقم الهاتف المدخل بالداتا بيس للزبون
         async function publicSearchClientOrders() {
             const phoneInput = document.getElementById('public-phone-search').value.trim();
             const resultsDiv = document.getElementById('public-portal-results');
@@ -1185,7 +1185,6 @@
             `;
         }
 
-        // إدارة الدخول والتحقق من كلمة المرور
         function openLoginModal() { document.getElementById('login-modal').classList.remove('hidden'); }
         function closeLoginModal() { document.getElementById('login-modal').classList.add('hidden'); }
 
@@ -1421,31 +1420,70 @@
                 contentEl.innerHTML = paid.length === 0 ? `<p class="text-xs text-slate-400 text-center py-6">لا توجد مبيعات.</p>` : `
                     <div class="overflow-x-auto border border-slate-200 rounded-2xl"><table class="w-full text-right text-xs"><thead class="bg-slate-100 text-slate-700 font-black"><tr><th class="p-3">الزبون</th><th class="p-3">الشحنة</th><th class="p-3">تاريخ الشراء</th><th class="p-3">المبلغ</th><th class="p-3">الربح</th></tr></thead><tbody class="divide-y divide-slate-100">${paid.map(o => `<tr><td class="p-3 font-bold">${o.client_name}</td><td class="p-3 text-emerald-800 font-black">${o.shipment_code}</td><td class="p-3">${o.order_date || '-'}</td><td class="p-3 font-bold">₪${Number(o.total_price).toFixed(2)}</td><td class="p-3 text-emerald-700 font-black">+₪${Number(o.profit).toFixed(2)}</td></tr>`).join('')}</tbody></table></div>`;
             } else if (type === 'profit') {
-                titleEl.textContent = 'تفاصيل صافي الأرباح';
+                titleEl.textContent = 'تقرير تفصيلي شامل للأرباح من الألف للياء (من المبيعات والمصاريف)';
                 const paid = filteredOrders.filter(o => o.is_paid && !o.is_returned);
                 const totalP = paid.reduce((s, o) => s + Number(o.profit || 0), 0);
                 const totalEx = filteredExpenses.reduce((s, e) => s + Number(e.amount || 0), 0);
                 const net = totalP - totalEx;
 
                 excelBtn.classList.remove('hidden');
-                excelBtn.setAttribute('onclick', "exportTableToExcel('modal-table-body', 'Net_Profit_Breakdown.csv')");
+                excelBtn.setAttribute('onclick', "exportTableToExcel('modal-profit-table-body', 'Comprehensive_Profit_Report.csv')");
                 invoiceBtn.classList.remove('hidden');
                 invoiceBtn.setAttribute('onclick', "openProfitInvoiceModal()");
 
                 contentEl.innerHTML = `
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-emerald-50 p-4 rounded-2xl border border-emerald-200 text-xs font-black text-emerald-950 mb-4">
-                        <div>أرباح الطلبيات: +₪${totalP.toFixed(2)}</div>
-                        <div>المصاريف: -₪${totalEx.toFixed(2)}</div>
-                        <div class="text-emerald-800 font-black">صافي الربح: ₪${net.toFixed(2)}</div>
-                    </div>
-                    <div class="overflow-x-auto border border-slate-200 rounded-2xl">
-                        <table class="w-full text-right text-xs">
-                            <thead class="bg-slate-100 text-slate-700 font-black"><tr><th class="p-3">الزبون</th><th class="p-3">الشحنة</th><th class="p-3">تاريخ الشراء</th><th class="p-3">المبلغ</th><th class="p-3">الربح الصافي</th></tr></thead>
-                            <tbody id="modal-table-body" class="divide-y divide-slate-100 font-bold">
-                                ${paid.length === 0 ? `<tr><td colspan="5" class="p-6 text-center text-slate-400">لا توجد أرباح.</td></tr>` : 
-                                    paid.map(o => `<tr><td class="p-3 font-bold">${o.client_name}</td><td class="p-3 text-emerald-800 font-black">${o.shipment_code}</td><td class="p-3">${o.order_date || '-'}</td><td class="p-3 font-bold">₪${Number(o.total_price).toFixed(2)}</td><td class="p-3 text-emerald-700 font-black">+₪${Number(o.profit).toFixed(2)}</td></tr>`).join('')}
-                            </tbody>
-                        </table>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 bg-emerald-50 p-4 rounded-2xl border border-emerald-200 text-xs font-black text-emerald-950 text-center">
+                            <div class="bg-white p-3 rounded-xl border border-emerald-100 shadow-sm"><span class="block text-slate-500 font-bold mb-1">إجمالي أرباح الطلبيات</span><span class="text-emerald-800 text-sm">+₪${totalP.toFixed(2)}</span></div>
+                            <div class="bg-white p-3 rounded-xl border border-emerald-100 shadow-sm"><span class="block text-slate-500 font-bold mb-1">إجمالي المصاريف</span><span class="text-rose-700 text-sm">-₪${totalEx.toFixed(2)}</span></div>
+                            <div class="bg-white p-3 rounded-xl border border-emerald-100 shadow-sm sm:col-span-2"><span class="block text-slate-500 font-bold mb-1">صافي الربح النهائي (من الألف للياء)</span><span class="text-teal-800 text-base">₪${net.toFixed(2)}</span></div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-black text-slate-900 text-xs sm:text-sm mb-2"><i class="fa-solid fa-list-check text-emerald-700"></i> تفاصيل كل عملية بيع (سعر الشراء من الموقع، ما دفعه الزبون، والربح المحقق):</h4>
+                            <div class="overflow-x-auto border border-slate-200 rounded-2xl max-h-60 overflow-y-auto">
+                                <table class="w-full text-right text-xs">
+                                    <thead class="bg-slate-100 text-slate-700 font-black sticky top-0">
+                                        <tr>
+                                            <th class="p-3">اسم الزبون</th>
+                                            <th class="p-3">الشحنة / القطع</th>
+                                            <th class="p-3">تاريخ الطلب</th>
+                                            <th class="p-3">سعر الموقع (₪)</th>
+                                            <th class="p-3">ما دفعه الزبون (₪)</th>
+                                            <th class="p-3">الربح الصافي (₪)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="modal-profit-table-body" class="divide-y divide-slate-100 font-bold">
+                                        ${paid.length === 0 ? `<tr><td colspan="6" class="p-6 text-center text-slate-400">لا توجد عمليات بيع مدفوعة مسجلة.</td></tr>` : 
+                                            paid.map(o => `
+                                                <tr>
+                                                    <td class="p-3 font-black text-slate-900">${o.client_name}</td>
+                                                    <td class="p-3 text-emerald-800">${o.shipment_code} <span class="text-[10px] text-slate-500">(${o.notes || '-'})</span></td>
+                                                    <td class="p-3 text-slate-700">${o.order_date || '-'}</td>
+                                                    <td class="p-3 text-slate-800">₪${Number(o.cost_price || 0).toFixed(2)}</td>
+                                                    <td class="p-3 font-black text-slate-900">₪${Number(o.total_price || 0).toFixed(2)}</td>
+                                                    <td class="p-3 font-black text-emerald-700">+₪${Number(o.profit || 0).toFixed(2)}</td>
+                                                </tr>
+                                            `).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-black text-slate-900 text-xs sm:text-sm mb-2"><i class="fa-solid fa-receipt text-rose-700"></i> المصاريف التي تم خصمها:</h4>
+                            <div class="overflow-x-auto border border-slate-200 rounded-2xl max-h-40 overflow-y-auto">
+                                <table class="w-full text-right text-xs">
+                                    <thead class="bg-slate-100 text-slate-700 font-black sticky top-0">
+                                        <tr><th class="p-3">البيان</th><th class="p-3">التاريخ</th><th class="p-3">المبلغ (₪)</th><th class="p-3">ملاحظات</th></tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100 font-bold">
+                                        ${filteredExpenses.length === 0 ? `<tr><td colspan="4" class="p-4 text-center text-slate-400">لا توجد مصاريف مسجلة.</td></tr>` :
+                                            filteredExpenses.map(e => `<tr><td class="p-3">${e.title}</td><td class="p-3">${e.date}</td><td class="p-3 text-rose-700 font-black">-₪${Number(e.amount).toFixed(2)}</td><td class="p-3">${e.notes || '-'}</td></tr>`).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 `;
             } else if (type === 'debt') {
@@ -1494,11 +1532,11 @@
             closeDashDetailsModal();
             const todayStr = new Date().toISOString().split('T')[0];
             document.getElementById('inv-date').textContent = `التاريخ: ${todayStr}`;
-            document.getElementById('inv-title-type').textContent = "تقرير كشف صافي الأرباح المعتمد";
-            document.getElementById('inv-code').textContent = "Ref: PROFIT-REPORT";
+            document.getElementById('inv-title-type').textContent = "تقرير كشف صافي الأرباح المفصل";
+            document.getElementById('inv-code').textContent = "Ref: COMPREHENSIVE-PROFIT-REPORT";
             document.getElementById('inv-client-name').textContent = "الإدارة العامة (أحمد)";
             document.getElementById('inv-client-phone').textContent = "-";
-            document.getElementById('inv-client-address').textContent = "سجل الأرباح الصافية للطلبيات";
+            document.getElementById('inv-client-address').textContent = "كشف أرباح الطلبيات والمصاريف";
 
             const filteredOrders = ordersData.filter(o => filterByDate(o.order_date));
             const paid = filteredOrders.filter(o => o.is_paid && !o.is_returned);
@@ -1535,7 +1573,7 @@
             const finalNet = totalProfitSum - totalEx;
 
             document.getElementById('inv-subtotal').textContent = `+₪${totalProfitSum.toFixed(2)}`;
-            document.getElementById('inv-total-label').textContent = "صافي الأرباح النهائي:";
+            document.getElementById('inv-total-label').textContent = "صافي الأرباح النهائي (بعد المصاريف):";
             document.getElementById('inv-grand-total').textContent = `₪${finalNet.toFixed(2)}`;
             document.getElementById('invoice-modal').classList.remove('hidden');
         }
@@ -1899,7 +1937,7 @@
 
         function exportTableToExcel(tableBodyId, filename) {
             const tbody = document.getElementById(tableBodyId);
-            if (!tbody || tbody.rows.length === 0) { alert('لا توجد بيانات!'); return; }
+            if (!tbody || tbody.rows.length === 0) { alert('لا توجد بيانات للتصدير!'); return; }
             let csv = [];
             const table = tbody.closest('table');
             const headers = [];
