@@ -306,18 +306,17 @@
                 </div>
             </div>
 
-            <!-- المؤشرات السريعة -->
+            <!-- المؤشرات الكارتات (جميعها قابلة للضغط وتعرض تفاصيل كاملة مع إمكانية التنزيل) -->
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3.5">
                 <div onclick="showDashboardDetails('revenue')" class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200 flex items-center justify-between relative overflow-hidden hover-scale cursor-pointer group">
                     <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-emerald-600 group-hover:bg-emerald-700 transition"></div>
                     <div>
-                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">المبيعات</p>
+                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">المبيعات (اضغط للتفصيل)</p>
                         <h3 id="dash-revenue" class="text-sm sm:text-base font-black text-slate-900 mt-1">₪0.00</h3>
                     </div>
                     <div class="w-9 h-9 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-shekel-sign"></i></div>
                 </div>
 
-                <!-- زر الأرباح التفصيلي المفصل من الألف للياء -->
                 <div onclick="showDashboardDetails('profit')" class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200 flex items-center justify-between relative overflow-hidden hover-scale cursor-pointer group">
                     <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-teal-600 group-hover:bg-teal-700 transition"></div>
                     <div>
@@ -330,7 +329,7 @@
                 <div onclick="showDashboardDetails('debt')" class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200 flex items-center justify-between relative overflow-hidden hover-scale cursor-pointer group">
                     <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-rose-600 group-hover:bg-rose-700 transition"></div>
                     <div>
-                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">ديون معلقة</p>
+                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">ديون معلقة (اضغط للتفصيل)</p>
                         <h3 id="dash-debt" class="text-sm sm:text-base font-black text-rose-700 mt-1">₪0.00</h3>
                     </div>
                     <div class="w-9 h-9 bg-rose-100 text-rose-800 rounded-2xl flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-file-invoice-dollar"></i></div>
@@ -339,7 +338,7 @@
                 <div onclick="showDashboardDetails('shipments')" class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200 flex items-center justify-between relative overflow-hidden hover-scale cursor-pointer group">
                     <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-amber-600 group-hover:bg-amber-700 transition"></div>
                     <div>
-                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">تكلفة الشحنات</p>
+                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">تكلفة الشحنات (اضغط)</p>
                         <h3 id="dash-shipment-costs" class="text-sm sm:text-base font-black text-amber-700 mt-1">₪0.00</h3>
                     </div>
                     <div class="w-9 h-9 bg-amber-100 text-amber-800 rounded-2xl flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-truck-fast"></i></div>
@@ -348,7 +347,7 @@
                 <div onclick="showDashboardDetails('shipping_duration')" class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200 flex items-center justify-between relative overflow-hidden hover-scale cursor-pointer group">
                     <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-indigo-600 group-hover:bg-indigo-700 transition"></div>
                     <div>
-                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">متوسط التوصيل</p>
+                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">متوسط التوصيل (اضغط)</p>
                         <h3 id="dash-avg-duration" class="text-sm sm:text-base font-black text-indigo-700 mt-1">0 يوم</h3>
                     </div>
                     <div class="w-9 h-9 bg-indigo-100 text-indigo-800 rounded-2xl flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-clock"></i></div>
@@ -357,7 +356,7 @@
                 <div onclick="showDashboardDetails('received')" class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200 flex items-center justify-between relative overflow-hidden hover-scale cursor-pointer group">
                     <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-blue-600 group-hover:bg-blue-700 transition"></div>
                     <div>
-                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">شحنات وصلت</p>
+                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">شحنات وصلت (اضغط)</p>
                         <h3 id="dash-received" class="text-sm sm:text-base font-black text-blue-700 mt-1">0</h3>
                     </div>
                     <div class="w-9 h-9 bg-blue-100 text-blue-800 rounded-2xl flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-box-archive"></i></div>
@@ -366,7 +365,7 @@
                 <div onclick="showDashboardDetails('vip_clients')" class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200 flex items-center justify-between relative overflow-hidden col-span-2 md:col-span-1 hover-scale cursor-pointer group">
                     <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-yellow-600 group-hover:bg-yellow-700 transition"></div>
                     <div>
-                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">زبائن VIP</p>
+                        <p class="text-[10px] sm:text-xs text-slate-500 font-black uppercase">زبائن VIP (اضغط)</p>
                         <h3 id="dash-vip-count" class="text-sm sm:text-base font-black text-yellow-700 mt-1">0</h3>
                     </div>
                     <div class="w-9 h-9 bg-yellow-100 text-yellow-800 rounded-2xl flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-crown"></i></div>
@@ -1334,7 +1333,7 @@
             const expFilter = (document.getElementById('filter-expenses-input')?.value || '').toLowerCase();
             const logFilter = (document.getElementById('filter-logs-input')?.value || '').toLowerCase();
 
-            const filteredShipments = shipmentsData.filter(s => filterByDate(s.date) && (s.shipment_code.toLowerCase().includes(shipFilter) || s.website.toLowerCase().includes(shipFilter)));
+            const filteredShipments = shipmentsData.filter(s => filterByDate(s.date) && (s.shipment_code.toLowerCase().includes(shipFilter) || s.website.toLowerCase().includes(webFilter)));
             const filteredExpenses = expensesData.filter(e => filterByDate(e.date) && e.title.toLowerCase().includes(expFilter));
             const filteredOrders = ordersData.filter(o => {
                 const datePass = filterByDate(o.order_date);
@@ -1412,13 +1411,31 @@
             invoiceBtn.classList.add('hidden');
 
             const filteredOrders = ordersData.filter(o => filterByDate(o.order_date));
+            const filteredShipments = shipmentsData.filter(s => filterByDate(s.date));
             const filteredExpenses = expensesData.filter(e => filterByDate(e.date));
 
             if (type === 'revenue') {
-                titleEl.textContent = 'تفاصيل المبيعات المحصلة';
+                titleEl.textContent = 'تفاصيل المبيعات المحصلة بالكامل';
                 const paid = filteredOrders.filter(o => o.is_paid && !o.is_returned);
-                contentEl.innerHTML = paid.length === 0 ? `<p class="text-xs text-slate-400 text-center py-6">لا توجد مبيعات.</p>` : `
-                    <div class="overflow-x-auto border border-slate-200 rounded-2xl"><table class="w-full text-right text-xs"><thead class="bg-slate-100 text-slate-700 font-black"><tr><th class="p-3">الزبون</th><th class="p-3">الشحنة</th><th class="p-3">تاريخ الشراء</th><th class="p-3">المبلغ</th><th class="p-3">الربح</th></tr></thead><tbody class="divide-y divide-slate-100">${paid.map(o => `<tr><td class="p-3 font-bold">${o.client_name}</td><td class="p-3 text-emerald-800 font-black">${o.shipment_code}</td><td class="p-3">${o.order_date || '-'}</td><td class="p-3 font-bold">₪${Number(o.total_price).toFixed(2)}</td><td class="p-3 text-emerald-700 font-black">+₪${Number(o.profit).toFixed(2)}</td></tr>`).join('')}</tbody></table></div>`;
+                excelBtn.classList.remove('hidden');
+                excelBtn.setAttribute('onclick', "exportTableToExcel('modal-details-table-body', 'Revenue_Details_Report.csv')");
+
+                contentEl.innerHTML = `
+                    <div class="space-y-3">
+                        <p class="text-xs text-slate-500 font-bold">قائمة الطلبيات المدفوعة والمحصورة في النطاق الزمني المحدد:</p>
+                        <div class="overflow-x-auto border border-slate-200 rounded-2xl max-h-96 overflow-y-auto">
+                            <table class="w-full text-right text-xs">
+                                <thead class="bg-slate-100 text-slate-700 font-black sticky top-0">
+                                    <tr><th class="p-3">اسم الزبون</th><th class="p-3">رقم الشحنة</th><th class="p-3">تاريخ الطلب</th><th class="p-3">تفاصيل القطع</th><th class="p-3">المبلغ المحصل (₪)</th><th class="p-3">الربح المحقق (₪)</th></tr>
+                                </thead>
+                                <tbody id="modal-details-table-body" class="divide-y divide-slate-100 font-bold">
+                                    ${paid.length === 0 ? `<tr><td colspan="6" class="p-6 text-center text-slate-400">لا توجد مبيعات.</td></tr>` :
+                                        paid.map(o => `<tr><td class="p-3">${o.client_name}</td><td class="p-3 text-emerald-800">${o.shipment_code}</td><td class="p-3">${o.order_date || '-'}</td><td class="p-3">${o.notes || '-'}</td><td class="p-3 font-black text-slate-900">₪${Number(o.total_price).toFixed(2)}</td><td class="p-3 text-emerald-700">+₪${Number(o.profit).toFixed(2)}</td></tr>`).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
             } else if (type === 'profit') {
                 titleEl.textContent = 'تقرير تفصيلي شامل للأرباح من الألف للياء (من المبيعات والمصاريف)';
                 const paid = filteredOrders.filter(o => o.is_paid && !o.is_returned);
@@ -1487,41 +1504,130 @@
                     </div>
                 `;
             } else if (type === 'debt') {
-                titleEl.textContent = 'قائمة الديون المعلقة على الزبائن';
+                titleEl.textContent = 'قائمة الديون والمدفوعات المعلقة على الزبائن';
                 const unpaid = filteredOrders.filter(o => !o.is_paid && !o.is_returned);
-                contentEl.innerHTML = unpaid.length === 0 ? `<div class="bg-emerald-50 text-emerald-800 p-4 rounded-2xl text-center text-xs font-black">لا توجد ديون معلقة!</div>` : `
-                    <div class="overflow-x-auto border border-slate-200 rounded-2xl"><table class="w-full text-right text-xs"><thead class="bg-slate-100 text-slate-700 font-black"><tr><th class="p-3">الزبون</th><th class="p-3">الشحنة</th><th class="p-3">المبلغ</th><th class="p-3">القطع</th></tr></thead><tbody class="divide-y divide-slate-100">${unpaid.map(o => `<tr><td class="p-3 font-bold">${o.client_name}</td><td class="p-3 text-emerald-800 font-black">${o.shipment_code}</td><td class="p-3 font-black text-rose-700">₪${Number(o.total_price).toFixed(2)}</td><td class="p-3">${o.notes || '-'}</td></tr>`).join('')}</tbody></table></div>`;
+                excelBtn.classList.remove('hidden');
+                excelBtn.setAttribute('onclick', "exportTableToExcel('modal-details-table-body', 'Unpaid_Debt_Report.csv')");
+
+                contentEl.innerHTML = `
+                    <div class="space-y-3">
+                        <p class="text-xs text-slate-500 font-bold">الطلبيات التي لم يتم دفع ثمنها من قبل الزبائن بعد:</p>
+                        <div class="overflow-x-auto border border-slate-200 rounded-2xl max-h-96 overflow-y-auto">
+                            <table class="w-full text-right text-xs">
+                                <thead class="bg-slate-100 text-slate-700 font-black sticky top-0">
+                                    <tr><th class="p-3">اسم الزبون</th><th class="p-3">الشحنة</th><th class="p-3">تاريخ الطلب</th><th class="p-3">القطع</th><th class="p-3">المبلغ المعلق (₪)</th></tr>
+                                </thead>
+                                <tbody id="modal-details-table-body" class="divide-y divide-slate-100 font-bold">
+                                    ${unpaid.length === 0 ? `<tr><td colspan="5" class="p-6 text-center text-emerald-700">لا توجد ديون معلقة! جميع الطلبيات مدفوعة.</td></tr>` :
+                                        unpaid.map(o => `<tr><td class="p-3">${o.client_name}</td><td class="p-3 text-emerald-800">${o.shipment_code}</td><td class="p-3">${o.order_date || '-'}</td><td class="p-3">${o.notes || '-'}</td><td class="p-3 font-black text-rose-700">₪${Number(o.total_price).toFixed(2)}</td></tr>`).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
             } else if (type === 'shipments') {
-                titleEl.textContent = 'تكاليف الشحنات الرئيسية';
-                const fShipments = shipmentsData.filter(s => filterByDate(s.date));
-                contentEl.innerHTML = fShipments.length === 0 ? `<p class="text-xs text-slate-400 text-center py-6">لا توجد شحنات.</p>` : `
-                    <div class="overflow-x-auto border border-slate-200 rounded-2xl"><table class="w-full text-right text-xs"><thead class="bg-slate-100 text-slate-700 font-black"><tr><th class="p-3">الكود</th><th class="p-3">الموقع</th><th class="p-3">التكلفة</th><th class="p-3">الحالة</th></tr></thead><tbody class="divide-y divide-slate-100">${fShipments.map(s => `<tr><td class="p-3 font-black text-emerald-800">${s.shipment_code}</td><td class="p-3">${s.website}</td><td class="p-3 font-black">₪${Number(s.shipping_cost).toFixed(2)}</td><td class="p-3">${s.is_received ? 'وصلت' : 'بالطريق'}</td></tr>`).join('')}</tbody></table></div>`;
+                titleEl.textContent = 'تفاصيل تكاليف الشحنات الرئيسية والعمولات';
+                excelBtn.classList.remove('hidden');
+                excelBtn.setAttribute('onclick', "exportTableToExcel('modal-details-table-body', 'Shipment_Costs_Report.csv')");
+
+                contentEl.innerHTML = `
+                    <div class="space-y-3">
+                        <p class="text-xs text-slate-500 font-bold">تفاصيل الشحنات وتكاليف الشحن والعمولة:</p>
+                        <div class="overflow-x-auto border border-slate-200 rounded-2xl max-h-96 overflow-y-auto">
+                            <table class="w-full text-right text-xs">
+                                <thead class="bg-slate-100 text-slate-700 font-black sticky top-0">
+                                    <tr><th class="p-3">كود الشحنة</th><th class="p-3">الموقع</th><th class="p-3">تاريخ الطلب</th><th class="p-3">تاريخ الوصول</th><th class="p-3">التكلفة الأساسية</th><th class="p-3">العمولة</th><th class="p-3">الإجمالي</th></tr>
+                                </thead>
+                                <tbody id="modal-details-table-body" class="divide-y divide-slate-100 font-bold">
+                                    ${filteredShipments.length === 0 ? `<tr><td colspan="7" class="p-6 text-center text-slate-400">لا توجد شحنات مسجلة.</td></tr>` :
+                                        filteredShipments.map(s => {
+                                            const base = Number(s.shipping_cost || 0);
+                                            const comm = Number(s.commission_rate || 0);
+                                            const total = base + (base * (comm / 100));
+                                            return `<tr><td class="p-3 font-black text-emerald-800">${s.shipment_code}</td><td class="p-3">${s.website}</td><td class="p-3">${s.order_date || '-'}</td><td class="p-3">${s.date}</td><td class="p-3">₪${base.toFixed(2)}</td><td class="p-3">${comm}%</td><td class="p-3 font-black text-slate-900">₪${total.toFixed(2)}</td></tr>`;
+                                        }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
             } else if (type === 'shipping_duration') {
-                titleEl.textContent = 'تحليل أوقات التوصيل';
-                const fShipments = shipmentsData.filter(s => filterByDate(s.date));
-                contentEl.innerHTML = fShipments.length === 0 ? `<p class="text-xs text-slate-400 text-center py-6">لا توجد بيانات.</p>` : `
-                    <div class="space-y-2">${fShipments.map(s => {
-                        let days = '-';
-                        if (s.order_date && s.date) {
-                            const diff = Math.ceil((new Date(s.date) - new Date(s.order_date)) / (1000 * 60 * 60 * 24));
-                            if (diff >= 0) days = `${diff} يوم`;
-                        }
-                        return `<div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 text-xs flex justify-between items-center"><span class="font-black text-emerald-800">${s.shipment_code} (${s.website})</span><span class="font-black text-indigo-700">مدة التوصيل: ${days}</span></div>`;
-                    }).join('')}</div>`;
+                titleEl.textContent = 'تحليل أوقات ومدة التوصيل الفعلية للشحنات';
+                excelBtn.classList.remove('hidden');
+                excelBtn.setAttribute('onclick', "exportTableToExcel('modal-details-table-body', 'Shipping_Duration_Report.csv')");
+
+                contentEl.innerHTML = `
+                    <div class="space-y-3">
+                        <p class="text-xs text-slate-500 font-bold">حساب الفرق بالأيام بين تاريخ طلب الشحنة وتاريخ وصولها الفعلي للبريد:</p>
+                        <div class="overflow-x-auto border border-slate-200 rounded-2xl max-h-96 overflow-y-auto">
+                            <table class="w-full text-right text-xs">
+                                <thead class="bg-slate-100 text-slate-700 font-black sticky top-0">
+                                    <tr><th class="p-3">كود الشحنة</th><th class="p-3">الموقع</th><th class="p-3">تاريخ الطلب</th><th class="p-3">تاريخ الوصول</th><th class="p-3">مدة التوصيل الفعلية</th></tr>
+                                </thead>
+                                <tbody id="modal-details-table-body" class="divide-y divide-slate-100 font-bold">
+                                    ${filteredShipments.length === 0 ? `<tr><td colspan="5" class="p-6 text-center text-slate-400">لا توجد شحنات.</td></tr>` :
+                                        filteredShipments.map(s => {
+                                            let daysText = 'قيد التوصيل';
+                                            if (s.order_date && s.date) {
+                                                const diff = Math.ceil((new Date(s.date) - new Date(s.order_date)) / (1000 * 60 * 60 * 24));
+                                                if (diff >= 0) daysText = `${diff} يوم`;
+                                            }
+                                            return `<tr><td class="p-3 font-black text-emerald-800">${s.shipment_code}</td><td class="p-3">${s.website}</td><td class="p-3">${s.order_date || '-'}</td><td class="p-3">${s.date}</td><td class="p-3 font-black text-indigo-700">${daysText}</td></tr>`;
+                                        }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
             } else if (type === 'received') {
-                titleEl.textContent = 'الشحنات الواصلة';
-                const fShipments = shipmentsData.filter(s => filterByDate(s.date)).filter(s => s.is_received);
-                contentEl.innerHTML = fShipments.length === 0 ? `<p class="text-xs text-slate-400 text-center py-6">لا توجد.</p>` : fShipments.map(s => `<div class="bg-slate-50 p-3 rounded-2xl text-xs font-black text-emerald-800 mb-2">${s.shipment_code} (${s.website}) - وصول: ${s.date}</div>`).join('');
+                titleEl.textContent = 'قائمة الشحنات الواصلة والمستلمة من البريد';
+                const received = filteredShipments.filter(s => s.is_received);
+                excelBtn.classList.remove('hidden');
+                excelBtn.setAttribute('onclick', "exportTableToExcel('modal-details-table-body', 'Received_Shipments_Report.csv')");
+
+                contentEl.innerHTML = `
+                    <div class="space-y-3">
+                        <p class="text-xs text-slate-500 font-bold">الشحنات التي تم استلامها من البريد بنجاح:</p>
+                        <div class="overflow-x-auto border border-slate-200 rounded-2xl max-h-96 overflow-y-auto">
+                            <table class="w-full text-right text-xs">
+                                <thead class="bg-slate-100 text-slate-700 font-black sticky top-0">
+                                    <tr><th class="p-3">كود الشحنة</th><th class="p-3">الموقع</th><th class="p-3">تاريخ الوصول</th><th class="p-3">ملاحظات</th></tr>
+                                </thead>
+                                <tbody id="modal-details-table-body" class="divide-y divide-slate-100 font-bold">
+                                    ${received.length === 0 ? `<tr><td colspan="4" class="p-6 text-center text-slate-400">لا توجد شحنات واصلة حالياً.</td></tr>` :
+                                        received.map(s => `<tr><td class="p-3 font-black text-emerald-800">${s.shipment_code}</td><td class="p-3">${s.website}</td><td class="p-3">${s.date}</td><td class="p-3">${s.notes || '-'}</td></tr>`).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
             } else if (type === 'vip_clients') {
-                titleEl.textContent = 'الزبائن المميزون (VIP)';
+                titleEl.textContent = 'قائمة الزبائن المميزين (VIP)';
                 const vipList = clientsData.filter(c => {
                     const cOrders = ordersData.filter(o => o.client_name === c.name && !o.is_returned);
                     const cPaid = cOrders.filter(o => o.is_paid);
                     const totalSpent = cPaid.reduce((s, o) => s + Number(o.total_price || 0), 0);
                     return cOrders.length >= 2 && cPaid.length === cOrders.length && totalSpent >= 200;
                 });
-                contentEl.innerHTML = vipList.length === 0 ? `<p class="text-xs text-slate-400 text-center py-6">لا توجد زبائن VIP.</p>` : `
-                    <div class="space-y-2">${vipList.map(c => `<div class="bg-yellow-50 border border-yellow-200 p-3 rounded-2xl text-xs flex justify-between items-center"><span class="font-black text-slate-900"><i class="fa-solid fa-crown text-yellow-600 ml-1"></i> ${c.name}</span><span class="text-slate-700 font-bold">هاتف الداتا: ${c.phone}</span></div>`).join('')}</div>`;
+                excelBtn.classList.remove('hidden');
+                excelBtn.setAttribute('onclick', "exportTableToExcel('modal-details-table-body', 'VIP_Clients_Report.csv')");
+
+                contentEl.innerHTML = `
+                    <div class="space-y-3">
+                        <p class="text-xs text-slate-500 font-bold">الزبائن الذين أتموا طلبيات متعددة ودفعوا بالكامل بإجمالي يتجاوز 200₪:</p>
+                        <div class="overflow-x-auto border border-slate-200 rounded-2xl max-h-96 overflow-y-auto">
+                            <table class="w-full text-right text-xs">
+                                <thead class="bg-slate-100 text-slate-700 font-black sticky top-0">
+                                    <tr><th class="p-3">اسم الزبون</th><th class="p-3">رقم الهاتف</th><th class="p-3">العنوان</th><th class="p-3">ملاحظات الإدارة</th></tr>
+                                </thead>
+                                <tbody id="modal-details-table-body" class="divide-y divide-slate-100 font-bold">
+                                    ${vipList.length === 0 ? `<tr><td colspan="4" class="p-6 text-center text-slate-400">لا توجد زبائن VIP مسجلين حالياً.</td></tr>` :
+                                        vipList.map(c => `<tr><td class="p-3 font-black text-slate-900"><i class="fa-solid fa-crown text-yellow-600 ml-1"></i> ${c.name}</td><td class="p-3">${c.phone}</td><td class="p-3">${c.address}</td><td class="p-3">${c.admin_notes || '-'}</td></tr>`).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
             }
             modal.classList.remove('hidden');
         }
@@ -1823,13 +1929,19 @@
         async function saveAnnouncement(e) {
             e.preventDefault();
             const id = document.getElementById('announcement-id').value;
+            const title = document.getElementById('announcement-form-title').value;
             const data = {
-                title: document.getElementById('announcement-form-title').value,
+                title: title,
                 content: document.getElementById('announcement-form-content').value,
                 is_active: document.getElementById('announcement-form-active').checked
             };
-            if (id) await supabaseClient.from('public_announcements').update(data).eq('id', id);
-            else await supabaseClient.from('public_announcements').insert([data]);
+            if (id) {
+                await supabaseClient.from('public_announcements').update(data).eq('id', id);
+                await logActivity('تعديل إعلان', `تعديل الإعلان (${title})`, false);
+            } else {
+                await supabaseClient.from('public_announcements').insert([data]);
+                await logActivity('إضافة إعلان', `إضافة إعلان جديد (${title})`, false);
+            }
             closeAnnouncementModal();
             fetchAllData();
         }
@@ -1846,8 +1958,10 @@
         }
 
         async function deleteAnnouncement(id) {
+            const a = announcementsData.find(item => item.id === id);
             if (!confirm('حذف هذا الإعلان؟')) return;
             await supabaseClient.from('public_announcements').delete().eq('id', id);
+            await logActivity('حذف إعلان', `حذف الإعلان (${a ? a.title : id})`, true);
             fetchAllData();
         }
 
@@ -1910,28 +2024,36 @@
             `).join('');
         }
 
+        // سجل الحركات مع تلوين صفوف الحذف باللون الأحمر المميز
         function renderLogs(data) {
             const tbody = document.getElementById('logs-table-body');
-            if (data.length === 0) { tbody.innerHTML = `<tr><td colspan="4" class="p-8 text-center text-slate-400">لا توجد حركات.</td></tr>`; return; }
-            tbody.innerHTML = data.map(l => `
-                <tr class="hover:bg-slate-50/80 transition ${l.is_critical ? 'bg-rose-50/30 border-r-4 border-rose-600' : ''}">
-                    <td class="p-4 font-black ${l.is_critical ? 'text-rose-700' : 'text-indigo-800'}">${l.action_type}</td>
-                    <td class="p-4 text-slate-800 text-xs font-bold leading-relaxed">${l.description}</td>
-                    <td class="p-4 text-xs text-slate-500 font-bold whitespace-nowrap">${new Date(l.created_at).toLocaleString('ar-EG')}</td>
-                    <td class="p-4 text-center"><button onclick="deleteSingleLog('${l.id}')" class="text-rose-600 hover:text-rose-800 p-1.5 hover:bg-rose-50 rounded-lg transition cursor-pointer font-bold"><i class="fa-solid fa-trash"></i></button></td>
-                </tr>
-            `).join('');
+            if (!tbody) return;
+            if (data.length === 0) { tbody.innerHTML = `<tr><td colspan="4" class="p-8 text-center text-slate-400">لا توجد حركات مسجلة بعد.</td></tr>`; return; }
+            
+            tbody.innerHTML = data.map(l => {
+                const isDelete = l.action_type.includes('حذف') || l.is_critical;
+                return `
+                    <tr class="transition ${isDelete ? 'bg-rose-100/70 border-r-4 border-rose-600 text-rose-950 font-black' : 'hover:bg-slate-50/80'}">
+                        <td class="p-4 font-black ${isDelete ? 'text-rose-700' : 'text-indigo-800'}"><i class="fa-solid ${isDelete ? 'fa-triangle-exclamation' : 'fa-circle-dot'} ml-1"></i> ${l.action_type}</td>
+                        <td class="p-4 text-xs font-bold leading-relaxed">${l.description}</td>
+                        <td class="p-4 text-xs font-bold whitespace-nowrap">${new Date(l.created_at).toLocaleString('ar-EG')}</td>
+                        <td class="p-4 text-center"><button onclick="deleteSingleLog('${l.id}')" class="text-rose-600 hover:text-rose-800 p-1.5 hover:bg-rose-50 rounded-lg transition cursor-pointer font-bold"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                `;
+            }).join('');
         }
 
         async function deleteSingleLog(id) {
-            if (!confirm('حذف السجل؟')) return;
+            if (!confirm('حذف هذا السجل؟')) return;
             await supabaseClient.from('activity_logs').delete().eq('id', id);
+            await logActivity('حذف سجل', `حذف سجل حركة ID: ${id}`, true);
             fetchAllData();
         }
 
         async function clearAllLogs() {
-            if (!confirm('تفريغ السجلات؟')) return;
+            if (!confirm('هل أنت متأكد من تفريغ كافة سجلات الحركات؟')) return;
             await supabaseClient.from('activity_logs').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+            await logActivity('تفريغ السجلات', 'تم تفريغ كافة سجلات النظام الحساسة', true);
             fetchAllData();
         }
 
@@ -1978,6 +2100,9 @@
         function openShipmentModal() {
             document.getElementById('shipment-form').reset();
             document.getElementById('shipment-id').value = '';
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('form-order-date').value = today;
+            document.getElementById('form-shipment-date').value = today;
             document.getElementById('shipment-modal-title').textContent = 'إضافة شحنة رئيسية';
             document.getElementById('shipment-modal').classList.remove('hidden');
         }
@@ -1985,13 +2110,22 @@
 
         async function saveShipment(e) {
             e.preventDefault();
+            const orderDate = document.getElementById('form-order-date').value;
+            const shipDate = document.getElementById('form-shipment-date').value;
+
+            // التحقق من صحة التواريخ
+            if (new Date(orderDate) > new Date(shipDate)) {
+                alert('خطأ في التواريخ! لا يمكن أن يكون تاريخ الطلب/الشراء بعد تاريخ الوصول للبريد.');
+                return;
+            }
+
             const id = document.getElementById('shipment-id').value;
             const code = document.getElementById('form-shipment-code').value;
             const data = {
                 shipment_code: code,
                 website: document.getElementById('form-shipment-website').value,
-                order_date: document.getElementById('form-order-date').value,
-                date: document.getElementById('form-shipment-date').value,
+                order_date: orderDate,
+                date: shipDate,
                 shipping_cost: parseFloat(document.getElementById('form-shipping-cost').value || 0),
                 commission_rate: parseFloat(document.getElementById('form-commission-rate').value || 0),
                 is_received: document.getElementById('form-shipment-received').checked,
@@ -1999,10 +2133,10 @@
             };
             if (id) {
                 await supabaseClient.from('shipments').update(data).eq('id', id);
-                await logActivity('تعديل شحنة', `تعديل الشحنة (${code})`, false);
+                await logActivity('تعديل شحنة', `تعديل تفاصيل الشحنة الرئيسية (${code})`, false);
             } else {
                 await supabaseClient.from('shipments').insert([data]);
-                await logActivity('إضافة شحنة', `إضافة الشحنة (${code})`, false);
+                await logActivity('إضافة شحنة', `إضافة شحنة رئيسية جديدة برمز (${code})`, false);
             }
             closeShipmentModal(); fetchAllData();
         }
@@ -2028,7 +2162,7 @@
             if (!confirm(`حذف الشحنة (${s ? s.shipment_code : id})؟`)) return;
             if (s) await supabaseClient.from('orders').delete().eq('shipment_code', s.shipment_code);
             await supabaseClient.from('shipments').delete().eq('id', id);
-            await logActivity('حذف شحنة', `حذف الشحنة (${s?.shipment_code})`, true);
+            await logActivity('حذف شحنة', `حذف الشحنة الرئيسية برمز (${s?.shipment_code}) وطلبياتها المرتبطة`, true);
             fetchAllData();
         }
 
@@ -2037,6 +2171,9 @@
             document.getElementById('order-form').reset();
             document.getElementById('order-id').value = '';
             document.getElementById('form-discount-rate').value = '0';
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('form-order-item-date').value = today;
+            document.getElementById('form-arrival-item-date').value = today;
             document.getElementById('order-modal-title').textContent = 'إضافة طلبية لزبون';
             document.getElementById('order-modal').classList.remove('hidden');
         }
@@ -2044,14 +2181,22 @@
 
         async function saveOrder(e) {
             e.preventDefault();
+            const orderDate = document.getElementById('form-order-item-date').value;
+            const arrivalDate = document.getElementById('form-arrival-item-date').value;
+
+            if (arrivalDate && new Date(orderDate) > new Date(arrivalDate)) {
+                alert('خطأ في التواريخ! لا يمكن أن يكون تاريخ الشراء بعد تاريخ الاستلام.');
+                return;
+            }
+
             const id = document.getElementById('order-id').value;
             const clientName = document.getElementById('form-client-name').value;
             const shipCode = document.getElementById('form-order-shipment').value;
             const data = {
                 shipment_code: shipCode,
                 client_name: clientName,
-                order_date: document.getElementById('form-order-item-date').value,
-                arrival_date: document.getElementById('form-arrival-item-date').value,
+                order_date: orderDate,
+                arrival_date: arrivalDate,
                 original_price: parseFloat(document.getElementById('form-original-price').value || 0),
                 discount_rate: parseFloat(document.getElementById('form-discount-rate').value || 0),
                 cost_price: parseFloat(document.getElementById('form-cost-price').value || 0),
@@ -2064,10 +2209,10 @@
             };
             if (id) {
                 await supabaseClient.from('orders').update(data).eq('id', id);
-                await logActivity('تعديل طلبية', `تعديل طلبية (${clientName})`, true);
+                await logActivity('تعديل طلبية', `تعديل طلبية الزبون (${clientName}) ضمن الشحنة (${shipCode})`, false);
             } else {
                 await supabaseClient.from('orders').insert([data]);
-                await logActivity('إضافة طلبية', `إضافة طلبية (${clientName})`, false);
+                await logActivity('إضافة طلبية', `إضافة طلبية جديدة للزبون (${clientName}) برمز شحنة (${shipCode})`, false);
             }
             closeOrderModal(); fetchAllData();
         }
@@ -2094,9 +2239,10 @@
         }
 
         async function deleteOrder(id) {
+            const o = ordersData.find(item => item.id === id);
             if (!confirm('حذف الطلبية؟')) return;
             await supabaseClient.from('orders').delete().eq('id', id);
-            await logActivity('حذف طلبية', `حذف طلبية ID: ${id}`, true);
+            await logActivity('حذف طلبية', `حذف طلبية الزبون (${o ? o.client_name : id}) للشحنة (${o?.shipment_code})`, true);
             fetchAllData();
         }
 
@@ -2120,10 +2266,10 @@
             };
             if (id) {
                 await supabaseClient.from('clients').update(data).eq('id', id);
-                await logActivity('تعديل زبون', `تعديل الزبون (${name})`, false);
+                await logActivity('تعديل زبون', `تعديل بيانات الزبون (${name})`, false);
             } else {
                 await supabaseClient.from('clients').insert([data]);
-                await logActivity('إضافة زبون', `إضافة الزبون (${name})`, false);
+                await logActivity('إضافة زبون', `إضافة زبون جديد باسم (${name})`, false);
             }
             closeClientModal(); fetchAllData();
         }
@@ -2144,7 +2290,7 @@
             const c = clientsData.find(item => item.id === id);
             if (!confirm(`حذف الزبون (${c ? c.name : id})؟`)) return;
             await supabaseClient.from('clients').delete().eq('id', id);
-            await logActivity('حذف زبون', `حذف الزبون (${c?.name})`, true);
+            await logActivity('حذف زبون', `حذف الزبون (${c?.name}) نهائياً`, true);
             fetchAllData();
         }
 
@@ -2159,9 +2305,15 @@
         async function saveWebsite(e) {
             e.preventDefault();
             const id = document.getElementById('website-id').value;
-            const data = { name: document.getElementById('website-form-name').value, url: document.getElementById('website-form-url').value, notes: document.getElementById('website-form-notes').value };
-            if (id) await supabaseClient.from('websites').update(data).eq('id', id);
-            else await supabaseClient.from('websites').insert([data]);
+            const name = document.getElementById('website-form-name').value;
+            const data = { name: name, url: document.getElementById('website-form-url').value, notes: document.getElementById('website-form-notes').value };
+            if (id) {
+                await supabaseClient.from('websites').update(data).eq('id', id);
+                await logActivity('تعديل موقع', `تعديل موقع الشراء (${name})`, false);
+            } else {
+                await supabaseClient.from('websites').insert([data]);
+                await logActivity('إضافة موقع', `إضافة موقع شراء جديد (${name})`, false);
+            }
             closeWebsiteModal(); fetchAllData();
         }
 
@@ -2177,8 +2329,10 @@
         }
 
         async function deleteWebsite(id) {
+            const w = websitesData.find(item => item.id === id);
             if (!confirm('حذف الموقع؟')) return;
             await supabaseClient.from('websites').delete().eq('id', id);
+            await logActivity('حذف موقع', `حذف موقع الشراء (${w?.name})`, true);
             fetchAllData();
         }
 
@@ -2194,32 +2348,41 @@
         async function saveExpense(e) {
             e.preventDefault();
             const id = document.getElementById('expense-id').value;
+            const title = document.getElementById('expense-form-title').value;
+            const amount = parseFloat(document.getElementById('expense-form-amount').value);
             const data = {
-                title: document.getElementById('expense-form-title').value,
+                title: title,
                 date: document.getElementById('expense-form-date').value,
-                amount: parseFloat(document.getElementById('expense-form-amount').value),
+                amount: amount,
                 notes: document.getElementById('expense-form-notes').value
             };
-            if (id) await supabaseClient.from('expenses').update(data).eq('id', id);
-            else await supabaseClient.from('expenses').insert([data]);
+            if (id) {
+                await supabaseClient.from('expenses').update(data).eq('id', id);
+                await logActivity('تعديل مصروف', `تعديل بند المصروف (${title}) بقيمة ₪${amount}`, false);
+            } else {
+                await supabaseClient.from('expenses').insert([data]);
+                await logActivity('إضافة مصروف', `إضافة مصروف جديد (${title}) بقيمة ₪${amount}`, false);
+            }
             closeExpenseModal(); fetchAllData();
         }
 
         async function editExpense(id) {
-            const ex = expensesData.find(item => item.id === id);
-            if (!ex) return;
-            document.getElementById('expense-id').value = ex.id;
-            document.getElementById('expense-form-title').value = ex.title;
-            document.getElementById('expense-form-date').value = ex.date;
-            document.getElementById('expense-form-amount').value = ex.amount;
-            document.getElementById('expense-form-notes').value = ex.notes || '';
+            const item = expensesData.find(item => item.id === id);
+            if (!item) return;
+            document.getElementById('expense-id').value = item.id;
+            document.getElementById('expense-form-title').value = item.title;
+            document.getElementById('expense-form-date').value = item.date;
+            document.getElementById('expense-form-amount').value = item.amount;
+            document.getElementById('expense-form-notes').value = item.notes || '';
             document.getElementById('expense-modal-title').textContent = 'تعديل المصروف';
             document.getElementById('expense-modal').classList.remove('hidden');
         }
 
         async function deleteExpense(id) {
+            const ex = expensesData.find(item => item.id === id);
             if (!confirm('حذف المصروف؟')) return;
             await supabaseClient.from('expenses').delete().eq('id', id);
+            await logActivity('حذف مصروف', `حذف بند المصروف (${ex?.title}) بقيمة ₪${ex?.amount}`, true);
             fetchAllData();
         }
     </script>
