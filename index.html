@@ -8,7 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- مكتبة توليد الباركود QR Code -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
@@ -306,7 +305,7 @@
                 </div>
             </div>
 
-            <!-- المؤشرات الكارتات (جميعها قابلة للضغط وتعرض تفاصيل كاملة مع إمكانية التنزيل) -->
+            <!-- المؤشرات الكارتات -->
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3.5">
                 <div onclick="showDashboardDetails('revenue')" class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200 flex items-center justify-between relative overflow-hidden hover-scale cursor-pointer group">
                     <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-emerald-600 group-hover:bg-emerald-700 transition"></div>
@@ -377,6 +376,9 @@
                 <button onclick="switchTab('shipments')" id="btn-tab-shipments" class="px-4.5 py-2.5 rounded-2xl font-black text-xs sm:text-sm bg-emerald-700 text-white transition shadow-sm cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
                     <i class="fa-solid fa-boxes-packing"></i> الشحنات الرئيسية
                 </button>
+                <button onclick="switchTab('shipment_details')" id="btn-tab-shipment_details" class="px-4.5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
+                    <i class="fa-solid fa-square-poll-vertical"></i> شحنات الزبائن (تفصيلي وطي)
+                </button>
                 <button onclick="switchTab('orders')" id="btn-tab-orders" class="px-4.5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale">
                     <i class="fa-solid fa-cart-shopping"></i> طلبيات الزبائن
                 </button>
@@ -423,6 +425,28 @@
                             </thead>
                             <tbody id="shipments-table-body" class="divide-y divide-slate-100 font-bold"><tr><td colspan="7" class="p-8 text-center text-slate-400">جاري التحميل...</td></tr></tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- تاب شحنات الزبائن المفصلة (مع إمكانية الطي والفتح والتصدير لكل شحنة) -->
+            <div id="section-shipment_details" class="space-y-4 hidden">
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-5 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-3 border-b border-slate-200 pb-4">
+                        <div>
+                            <h2 class="font-black text-base sm:text-lg text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-square-poll-vertical text-emerald-700"></i> تفاصيل الشحنات والزبائن التابعين لكل شحنة
+                            </h2>
+                            <p class="text-xs text-slate-500 font-bold mt-0.5">كل شحنة تعرض تفاصيلها كاملة وتحتوي جدولاً بالزبائن الذين اشتروا منها مع إمكانية طيها وفتحها وتصديرها.</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input type="text" id="filter-detailed-shipments-input" oninput="renderDetailedShipmentsTab()" placeholder="ابحث بكود الشحنة..." class="px-3.5 py-2 border border-slate-300 rounded-2xl text-xs font-bold w-full sm:w-52 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-700">
+                            <button onclick="exportAllDetailedShipmentsExcel()" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2.5 rounded-2xl text-xs font-black transition flex items-center gap-1.5 shadow-sm cursor-pointer whitespace-nowrap hover-scale"><i class="fa-solid fa-file-excel"></i> تصدير الكل Excel</button>
+                        </div>
+                    </div>
+                    
+                    <div id="detailed-shipments-container" class="space-y-4">
+                        <div class="p-8 text-center text-slate-400 font-bold">جاري التحميل...</div>
                     </div>
                 </div>
             </div>
@@ -1347,12 +1371,166 @@
 
             renderDashboard(filteredOrders, filteredShipments, filteredExpenses);
             renderShipments(filteredShipments);
+            renderDetailedShipmentsTab();
             renderOrders(filteredOrders);
             renderClients(filteredClients);
             renderAnnouncements(announcementsData);
             renderWebsites(filteredWebsites);
             renderExpenses(filteredExpenses);
             renderLogs(filteredLogs);
+        }
+
+        // دالة عرض تاب الشحنات المفصلة (مع إمكانية الطي والفتح)
+        function renderDetailedShipmentsTab() {
+            const container = document.getElementById('detailed-shipments-container');
+            if (!container) return;
+            const textFilter = (document.getElementById('filter-detailed-shipments-input')?.value || '').toLowerCase();
+
+            const filtered = shipmentsData.filter(s => s.shipment_code.toLowerCase().includes(textFilter) || s.website.toLowerCase().includes(textFilter));
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center text-slate-400 font-bold">لا توجد شحنات مطابقة للبحث.</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(s => {
+                const sOrders = ordersData.filter(o => o.shipment_code === s.shipment_code);
+                const base = Number(s.shipping_cost || 0);
+                const comm = Number(s.commission_rate || 0);
+                const totalCost = base + (base * (comm / 100));
+                const totalOrdersSum = sOrders.filter(o => !o.is_returned).reduce((sum, o) => sum + Number(o.total_price || 0), 0);
+
+                return `
+                    <div class="bg-slate-50 border-2 border-slate-200 rounded-3xl overflow-hidden shadow-sm transition">
+                        <!-- رأس البطاقة (عنوان الشحنة وأزرار الفتح والطي والتصدير) -->
+                        <div class="bg-white p-4 sm:p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 border-b border-slate-200">
+                            <div class="flex items-center gap-3">
+                                <button onclick="toggleCollapse('shipment-collapse-${s.id}', 'icon-${s.id}')" class="w-10 h-10 rounded-2xl bg-emerald-100 hover:bg-emerald-200 text-emerald-800 flex items-center justify-center cursor-pointer transition">
+                                    <i id="icon-${s.id}" class="fa-solid fa-chevron-down transition transform rotate-180"></i>
+                                </button>
+                                <div>
+                                    <h3 class="font-black text-base sm:text-lg text-slate-900 flex items-center gap-2">
+                                        <i class="fa-solid fa-box text-emerald-700"></i> شحنة: <span class="text-emerald-800">${s.shipment_code}</span>
+                                        <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-900 rounded-xl text-xs font-black">${s.website}</span>
+                                    </h3>
+                                    <p class="text-xs text-slate-500 font-bold mt-0.5">
+                                        تاريخ الطلب: <b>${s.order_date || '-'}</b> | تاريخ الوصول للبريد: <b>${s.date}</b> | تكلفة الشحنة: <b>₪${totalCost.toFixed(2)}</b> | مبيعات الشحنة: <b class="text-emerald-700">₪${totalOrdersSum.toFixed(2)}</b>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-2 w-full md:w-auto justify-end">
+                                <span class="px-3 py-1 rounded-xl text-xs font-black ${s.is_received ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-950'}">${s.is_received ? '✔ وصلت من البريد' : '⏳ بالطريق'}</span>
+                                <button onclick="exportSingleShipmentExcel('${s.shipment_code}')" class="bg-blue-700 hover:bg-blue-800 text-white px-3.5 py-2 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-sm"><i class="fa-solid fa-file-excel"></i> تصدير Excel</button>
+                                <button onclick="openInvoiceModal('shipment', '${s.shipment_code}')" class="bg-emerald-700 hover:bg-emerald-800 text-white px-3.5 py-2 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-sm"><i class="fa-solid fa-file-invoice"></i> فاتورة الشحنة</button>
+                            </div>
+                        </div>
+
+                        <!-- جدول الزبائن الصغير داخل الشحنة (قابل للطي) -->
+                        <div id="shipment-collapse-${s.id}" class="p-4 sm:p-5 space-y-3">
+                            <h4 class="font-black text-slate-800 text-xs sm:text-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-users text-emerald-700"></i> الزبائن الذين اشتروا من هذه الشحنة (${sOrders.length}):
+                            </h4>
+                            <div class="overflow-x-auto border border-slate-200 rounded-2xl bg-white shadow-inner">
+                                <table class="w-full text-right text-xs">
+                                    <thead class="bg-slate-100 text-slate-700 font-black">
+                                        <tr>
+                                            <th class="p-3">اسم الزبون</th>
+                                            <th class="p-3">تاريخ الطلب</th>
+                                            <th class="p-3">تاريخ الاستلام</th>
+                                            <th class="p-3">تفاصيل القطع</th>
+                                            <th class="p-3">السعر الأصلي</th>
+                                            <th class="p-3">ما دفعه الزبون</th>
+                                            <th class="p-3">حالة الدفع والاستلام</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100 font-bold">
+                                        ${sOrders.length === 0 ? `<tr><td colspan="7" class="p-6 text-center text-slate-400">لا توجد طلبيات مسجلة لهذه الشحنة.</td></tr>` :
+                                            sOrders.map(o => `
+                                                <tr class="${o.is_returned ? 'bg-rose-50/40 line-through text-slate-400' : ''}">
+                                                    <td class="p-3 font-black text-slate-900">${o.client_name}</td>
+                                                    <td class="p-3 text-slate-700">${o.order_date || '-'}</td>
+                                                    <td class="p-3 text-slate-700">${o.arrival_date || '-'}</td>
+                                                    <td class="p-3 text-slate-800">${o.notes || '-'}</td>
+                                                    <td class="p-3 text-slate-600">₪${Number(o.original_price || o.total_price).toFixed(2)}</td>
+                                                    <td class="p-3 font-black text-emerald-800">₪${Number(o.total_price).toFixed(2)}</td>
+                                                    <td class="p-3">
+                                                        <span class="px-2 py-0.5 rounded text-[10px] ${o.is_paid ? 'bg-emerald-100 text-emerald-900' : 'bg-rose-100 text-rose-900'}">${o.is_paid ? 'مدفوع' : 'غير مدفوع'}</span>
+                                                        <span class="px-2 py-0.5 rounded text-[10px] ${o.is_delivered ? 'bg-blue-100 text-blue-900' : 'bg-amber-100 text-amber-900'}">${o.is_returned ? 'مرتجع' : (o.is_delivered ? 'استلم' : 'قيد الانتظار')}</span>
+                                                    </td>
+                                                </tr>
+                                            `).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleCollapse(collapseId, iconId) {
+            const el = document.getElementById(collapseId);
+            const icon = document.getElementById(iconId);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                el.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // تصدير شحنة واحدة تفصيلية مع زبائنها إلى Excel
+        function exportSingleShipmentExcel(shipmentCode) {
+            const s = shipmentsData.find(item => item.shipment_code === shipmentCode);
+            const sOrders = ordersData.filter(o => o.shipment_code === shipmentCode);
+            if (!s) return;
+
+            let csv = [];
+            csv.push(`"تفاصيل الشحنة الرئيسية:","${s.shipment_code}","الموقع:","${s.website}","تاريخ الطلب:","${s.order_date || '-'}","تاريخ الوصول:","${s.date}"`);
+            csv.push(`""`);
+            csv.push(`"اسم الزبون","تاريخ الطلب","تاريخ الاستلام","تفاصيل القطع","السعر الأصلي","ما دفعه الزبون","حالة الدفع","حالة الاستلام"`);
+
+            sOrders.forEach(o => {
+                csv.push(`"${o.client_name}","${o.order_date || '-'}","${o.arrival_date || '-'}","${o.notes || '-'}","${o.original_price || o.total_price}","${o.total_price}","${o.is_paid ? 'مدفوع' : 'غير مدفوع'}","${o.is_returned ? 'مرتجع' : (o.is_delivered ? 'استلم' : 'انتظار')}"`);
+            });
+
+            const blob = new Blob(["\ufeff" + csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute("download", `Shipment_${shipmentCode}_Details.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // تصدير كل الشحنات بتفاصيلها إلى Excel
+        function exportAllDetailedShipmentsExcel() {
+            let csv = [];
+            csv.push(`"تقرير شامل تفصيلي للشحنات والزبائن"`);
+            csv.push(`""`);
+
+            shipmentsData.forEach(s => {
+                csv.push(`"كود الشحنة:","${s.shipment_code}","الموقع:","${s.website}","الوصول:","${s.date}"`);
+                csv.push(`"اسم الزبون","تاريخ الطلب","تفاصيل القطع","المبلغ","الدفع","الحالة"`);
+                const sOrders = ordersData.filter(o => o.shipment_code === s.shipment_code);
+                if(sOrders.length === 0) {
+                    csv.push(`"لا توجد طلبيات لهذه الشحنة"`);
+                } else {
+                    sOrders.forEach(o => {
+                        csv.push(`"${o.client_name}","${o.order_date || '-'}","${o.notes || '-'}","${o.total_price}","${o.is_paid ? 'مدفوع' : 'غير مدفوع'}","${o.is_delivered ? 'استلم' : 'انتظار'}"`);
+                    });
+                }
+                csv.push(`""`);
+            });
+
+            const blob = new Blob(["\ufeff" + csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute("download", `All_Shipments_Detailed_Report.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function renderDashboard(fOrders, fShipments, fExpenses) {
@@ -2024,7 +2202,6 @@
             `).join('');
         }
 
-        // سجل الحركات مع تلوين صفوف الحذف باللون الأحمر المميز
         function renderLogs(data) {
             const tbody = document.getElementById('logs-table-body');
             if (!tbody) return;
@@ -2085,7 +2262,7 @@
         }
 
         function switchTab(tab) {
-            ['shipments', 'orders', 'clients', 'announcements', 'websites', 'expenses', 'logs'].forEach(t => {
+            ['shipments', 'shipment_details', 'orders', 'clients', 'announcements', 'websites', 'expenses', 'logs'].forEach(t => {
                 const el = document.getElementById(`section-${t}`);
                 const btn = document.getElementById(`btn-tab-${t}`);
                 if (el) el.classList.add('hidden');
@@ -2095,6 +2272,10 @@
             const targetBtn = document.getElementById(`btn-tab-${tab}`);
             if (targetEl) targetEl.classList.remove('hidden');
             if (targetBtn) targetBtn.className = "px-4.5 py-2.5 rounded-2xl font-black text-xs sm:text-sm bg-emerald-700 text-white transition shadow-sm cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 hover-scale";
+            
+            if (tab === 'shipment_details') {
+                renderDetailedShipmentsTab();
+            }
         }
 
         function openShipmentModal() {
@@ -2113,7 +2294,6 @@
             const orderDate = document.getElementById('form-order-date').value;
             const shipDate = document.getElementById('form-shipment-date').value;
 
-            // التحقق من صحة التواريخ
             if (new Date(orderDate) > new Date(shipDate)) {
                 alert('خطأ في التواريخ! لا يمكن أن يكون تاريخ الطلب/الشراء بعد تاريخ الوصول للبريد.');
                 return;
@@ -2379,7 +2559,7 @@
         }
 
         async function deleteExpense(id) {
-            const ex = expensesData.find(item => item.id === id);
+            const ex = expensesData.item(item => item.id === id);
             if (!confirm('حذف المصروف؟')) return;
             await supabaseClient.from('expenses').delete().eq('id', id);
             await logActivity('حذف مصروف', `حذف بند المصروف (${ex?.title}) بقيمة ₪${ex?.amount}`, true);
